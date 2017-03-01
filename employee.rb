@@ -20,11 +20,11 @@ class Employee
   attr_writer :active
   attr_accessor :salary
 
-  def initialize(input_hash)
-    @first_name = input_hash[:first_name]
-    @last_name = input_hash[:last_name]
-    @salary = input_hash[:salary]
-    @active = input_hash[:active]
+  def initialize(input_hash = {})
+    @first_name = input_hash[:first_name] || "First"
+    @last_name = input_hash[:last_name] || "Last"
+    @salary = input_hash[:salary] || 0
+    @active = input_hash[:active] || false
   end
 
   def print_info
@@ -34,23 +34,40 @@ class Employee
   def give_annual_raise
     @salary = @salary * 1.05
   end
+
+  def full_name
+    # if the last name ends with an 's', then add 'esquire'
+    # name = "Test"
+    # name[0] = "T"
+    # name[1] = "e"
+    # name[-1] = "t"
+    if last_name[-1] == "s"
+      puts "#{first_name} #{last_name}, Esquire"
+    else
+      puts "#{first_name} #{last_name}"
+    end
+  end
 end
 
-employee1 = Employee.new(first_name: "Bill", last_name: "Gates", salary: 100000, active: true)
+employee1 = Employee.new()
 
 employee2 = Employee.new({salary: 100000, active: true, first_name: "Mark", last_name: "Zuckerberg"})
 
-employee1.print_info
-employee1.give_annual_raise
-employee1.print_info
+employee1.full_name
+employee2.full_name
 
-puts employee1.salary
-puts employee1.first_name
-puts employee1.last_name
 
-# Same thing as employee1.salary=(999)
-employee1.salary = 999
-puts employee1.salary
+# employee1.print_info
+# employee1.give_annual_raise
+# employee1.print_info
+
+# puts employee1.salary
+# puts employee1.first_name
+# puts employee1.last_name
+
+# # Same thing as employee1.salary=(999)
+# employee1.salary = 999
+# puts employee1.salary
 
 
 
