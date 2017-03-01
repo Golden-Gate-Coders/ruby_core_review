@@ -21,7 +21,7 @@ class Employee
   attr_accessor :salary
 
   def initialize(input_hash = {})
-    @first_name = input_hash[:first_name] || "First"
+    @first_name = input_hash[:first_name] || input_hash[:last_name]
     @last_name = input_hash[:last_name] || "Last"
     @salary = input_hash[:salary] || 0
     @active = input_hash[:active] || false
@@ -69,6 +69,20 @@ employee2.full_name
 # employee1.salary = 999
 # puts employee1.salary
 
+# 1. Simple solution
+employees_array = []
+(0..100).each do
+  employee = Employee.new(first_name: "Mark")
+  employees_array << employee
+  puts employee.first_name
+end
+
+
+# 2. Each with index example
+(0..100).each do |i|
+  employees_array << Employee.new(first_name: "Mark")
+  puts employees_array[i].first_name
+end
 
 
 
