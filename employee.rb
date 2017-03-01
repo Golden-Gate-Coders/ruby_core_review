@@ -16,27 +16,15 @@
 # 3. Representing an employee as an object
 
 class Employee
+  attr_reader :first_name, :last_name
+  attr_writer :active
+  attr_accessor :salary
+
   def initialize(input_first, input_last, input_salary, input_active)
     @first_name = input_first
     @last_name = input_last
     @salary = input_salary
     @active = input_active
-  end
-
-  def first_name
-    @first_name
-  end
-
-  def last_name
-    @last_name
-  end
-
-  def salary
-    @salary
-  end
-
-  def salary=(new_salary)
-    @salary = new_salary
   end
 
   def print_info
